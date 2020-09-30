@@ -3246,6 +3246,8 @@ class PEDACmd(object):
 
         self._update_width()
 
+        msg('\033[0m%s\033[;34m' % self.MSG_LEGEND)
+
         status = self.peda.get_status()
         need_footer = False
 
@@ -3270,7 +3272,7 @@ class PEDACmd(object):
             need_footer = True
 
         if need_footer:
-            msg('\033[;34m[%s]\033[0m' % ('\033[0m%s\033[;34m' % self.MSG_LEGEND).center(self.width + 40, "-"), "blue")
+            msg('\033[;34m[%s]\033[0m' % ("-" * self.width), "blue")
 
         # display stopped reason
         if "SIG" in status:
